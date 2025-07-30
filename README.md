@@ -2,11 +2,16 @@
 
 A (better) example of [GDWeave](https://github.com/NotNite/GDWeave) Webfishing mods.
 
-## Project overview
+## Project and GDWeave patching overview
 
 This repository is a developer-friendly replacement for the _old_ vanilla one that Nite
-threw together for GDWeave. It includes a *much needed* abstraction layer for working with
-GDWeave's [Tokens](), written primarily by [Teemaw](https://teemaw.dev) but until now
+threw together for GDWeave, which has no actual patches being applied in the example and
+is entirely devoid of documentation.
+
+## TokenBuilders, PatternFactories, and SnippetBuilders, Oh My!
+
+This project includes an abstraction layer for working with
+GDWeave's Tokens, written primarily by [Teemaw](https://teemaw.dev) but _until now_
 never exported and made available for reuse in other projects. Without this, mods/patches
 need to be written in tedium, an error-prone and monotonous way:
 
@@ -82,11 +87,7 @@ I tried to include _many_ example patches in a variety of styles to showcase as 
 the reader. For what it's worth, a typical mod might never get this large so don't feel like you've done something wrong if your mod
 file ends up being only 50 or so lines-- that's totally normal!
 
-
-## Other examples to reference
-- [BetterLocalChat](https://github.com/binury/Toes.BetterLocalChat)
-- [Calico](https://github.com/tma02/calico/tree/main)
-- Submit a PR if you know of a good project to add here!
+I'll try to document this section more thoroughly in time.
 
 ## Building
 
@@ -95,6 +96,23 @@ To build the project, you need to set the GDWeavePath environment variable to yo
 This can also be done in Rider with File | Settings | Build, Execution, Deployment | Toolset and Build | MSBuild global properties.
 You can also achieve this with a .user file, in Visual Studio.
 
+> [!IMPORTANT]
+> If you run into snags at runtime with error messages about unknown identifiers which are names of built-in functions (such as `randf` or `clamp`)
+please [file an issue](https://github.com/binury/Toes.Tuner/issues) and let me know so I can add the missing token to the list!
+
+
+## Other examples to reference
+- [BetterLocalChat](https://github.com/binury/Toes.BetterLocalChat)
+- [Calico](https://github.com/tma02/calico/tree/main)
+- Submit a PR if you know of a good project to add here!
+
+
+
 ## Publishing your finished mod
 
-See included Powershell script publish.ps1
+For convenience you can checkout and use [included Powershell script](./publish.ps1). Otherwise, manually download another mod and take a look at the structure of the zip file.
+Once it's ready, you can [upload your mod to Thunderstore](https://thunderstore.io/c/webfishing/create/).
+
+## I ran into some snags and I'd really appreciate some help!
+> [!TIP]
+> You can [reach out to me](https://ko-fi.com/c/993813af6b) for help with building your mod project.
