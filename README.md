@@ -81,7 +81,7 @@ mi.RegisterScriptMod(
 I tried to include _many_ example patches in a variety of styles to showcase as much as I could without potentially overwhelming
 the reader. For what it's worth, a typical mod might never get this large so don't feel like you've done something wrong if your mod
 file ends up being only 50 or so lines-- that's totally normal!
-file ends up being only 50 or so lines-- that's totally normal!
+
 
 ## Other examples to reference
 - [BetterLocalChat](https://github.com/binury/Toes.BetterLocalChat)
