@@ -1,0 +1,11 @@
+{
+  "name": "MyModName",
+  "version_number": "0.0.1",
+  "website_url": "https://github.com/binury/better_webfishing_mod_template",
+  "description": "[Mod description for your Thunderstore listing]",
+  "dependencies": [
+    "[What you need to put here will vary but, e.g.: ]",
+    "NotNet-GDWeave-2.0.14",
+    "toes-Socks-0.3.0"
+  ]
+}   
