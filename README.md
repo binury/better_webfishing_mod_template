@@ -8,6 +8,8 @@ This repository is a developer-friendly replacement for the _old_ vanilla one th
 threw together for GDWeave, which has no actual patches being applied in the example and
 is entirely devoid of documentation.
 
+I know it's a bit sparse for now; I'll try to document this section more thoroughly in time!
+
 ## TokenBuilders, PatternFactories, and SnippetBuilders, Oh My!
 
 This project includes an abstraction layer for working with
@@ -87,7 +89,6 @@ I tried to include _many_ example patches in a variety of styles to showcase as 
 the reader. For what it's worth, a typical mod might never get this large so don't feel like you've done something wrong if your mod
 file ends up being only 50 or so lines-- that's totally normal!
 
-I'll try to document this section more thoroughly in time.
 
 ## Building
 
@@ -96,9 +97,24 @@ To build the project, you need to set the GDWeavePath environment variable to yo
 This can also be done in Rider with File | Settings | Build, Execution, Deployment | Toolset and Build | MSBuild global properties.
 You can also achieve this with a .user file, in Visual Studio.
 
+## Testing the DLL
+
 > [!IMPORTANT]
 > If you run into snags at runtime with error messages about unknown identifiers which are names of built-in functions (such as `randf` or `clamp`)
 please [file an issue](https://github.com/binury/Toes.Tuner/issues) and let me know so I can add the missing token to the list!
+
+> [!TIP]
+> I recommend using R2ModManager to manage your mod profiles, and that you create a separate `TEST` profile that only includes your mod
+and its dependencies (if any).
+
+After you've built your project you can copy over the manifest file along with the dll into a new folder within your mods directory.
+I have [included a script](./webfishing-debugging-mode.bat) you can use to launch the game with GDWeave's console open. 
+
+> [!TIP]
+> You won't see as much as you'd expect in the GDWeave log while testing/troubleshooting. You should set your system's environment variables to include 
+`GDWEAVE_DEBUG` and `GDWEAVE_CONSOLE`, and set their values as 1. When you're done
+testing and ready to play the game as usual, you can delete these env vars.
+***Or***, use the [included script](./webfishing-debugging-mode.bat) 
 
 
 ## Other examples to reference
