@@ -11,7 +11,7 @@ namespace MyModName;
 /// do try to pick good defaults!)
 /// <br/>
 /// Note: the generated JSON file will be placed inside of the GDWeave directory, in the `configs` folder
-/// (next to/ a sibling of the `mods` folder)
+/// e.g.: WEBFISHING\GDWeave\configs\Toes.MyModName.json
 /// </summary>
 public class ConfigFileSchema
 {
