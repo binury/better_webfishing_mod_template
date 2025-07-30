@@ -55,7 +55,6 @@ public static class ScriptTokenizer
 			{ "onready", TokenType.PrOnready },
 			{ "@tool", TokenType.PrTool },
 			{ "@export", TokenType.PrExport },
-			// CALICO:
 			{ "yield", TokenType.PrYield },
 			{ "setget", TokenType.PrSetget },
 			{ "static", TokenType.PrStatic },
@@ -265,7 +264,7 @@ public static class ScriptTokenizer
 		var idName = string.Empty;
 
 		var toFlush = new List<Token>(2);
-		// CALICO: We don't need this since we're dealing with snippets
+		// We don't need this since we're dealing with snippets
 		//finalTokens.Add(new Token(TokenType.Newline, baseIndent));
 		var enumerator = tokens.GetEnumerator();
 		var reparse = false;
@@ -350,12 +349,12 @@ public static class ScriptTokenizer
 				{
 					if (idName.Trim() == "return")
 					{
-						// CALICO: Hack to handle `return` being the last token of a line
+						// Hack to handle `return` being the last token of a line
 						finalTokens.Add(new Token(TokenType.CfReturn));
 					}
 					else if (idName.Trim() == "self")
 					{
-						// CALICO: Hack to handle `self` being the last token of a line
+						// Hack to handle `self` being the last token of a line
 						finalTokens.Add(new Token(TokenType.Self));
 					}
 					else
@@ -363,55 +362,51 @@ public static class ScriptTokenizer
 						{
 							// TODO: CALICO: clean up this hack
 							case "print":
-								// CALICO: Without this, `print` is tokenized as an identifier.
+								// Without this, `print` is tokenized as an identifier.
 								finalTokens.Add(new Token(TokenType.BuiltInFunc, (uint?)BuiltinFunction.TextPrint));
 								break;
 							case "null":
-								// CALICO: Without this, `null` is tokenized as an identifier.
+								// Without this, `null` is tokenized as an identifier.
 								finalTokens.Add(new ConstantToken(new NilVariant()));
 								break;
 							case "break":
-								// CALICO: Without this, `break` is tokenized as an identifier.
+								// Without this, `break` is tokenized as an identifier.
 								finalTokens.Add(new Token(TokenType.CfBreak));
 								break;
 							case "match":
-								// CALICO: Without this, `match` is tokenized as an identifier.
+								// Without this, `match` is tokenized as an identifier.
 								finalTokens.Add(new Token(TokenType.CfMatch));
 								break;
 							case "Color":
-								// CALICO: Without this, `Color` is tokenized as an identifier.
+								// Without this, `Color` is tokenized as an identifier.
 								finalTokens.Add(new Token(TokenType.BuiltInType, 14));
 								break;
 							case "Vector3":
-								// CALICO: Without this, `Vector3` is tokenized as an identifier.
+								// Without this, `Vector3` is tokenized as an identifier.
 								finalTokens.Add(new Token(TokenType.BuiltInType, 7));
 								break;
 							case "lerp_angle":
-								// CALICO: Without this, `lerp_angle` is tokenized as an identifier.
+								// Without this, `lerp_angle` is tokenized as an identifier.
 								finalTokens.Add(new Token(TokenType.BuiltInFunc, (uint?)BuiltinFunction.MathLerpAngle));
 								break;
 							case "int":
-								// CALICO: https://docs.godotengine.org/en/3.5/tutorials/io/binary_serialization_api.html
+								// https://docs.godotengine.org/en/3.5/tutorials/io/binary_serialization_api.html
 								finalTokens.Add(new Token(TokenType.BuiltInType, 2));
 								break;
 							case "pow":
-								// CALICO:
 								finalTokens.Add(new Token(TokenType.BuiltInFunc, (uint?)BuiltinFunction.MathPow));
 								break;
 							case "abs":
-								// CALICO:
 								finalTokens.Add(new Token(TokenType.BuiltInFunc, (uint?)BuiltinFunction.MathAbs));
 								break;
 							case "randi":
-								// CALICO:
 								finalTokens.Add(new Token(TokenType.BuiltInFunc, (uint?)BuiltinFunction.MathRand));
 								break;
 							case "randf":
-								// CALICO:
 								finalTokens.Add(new Token(TokenType.BuiltInFunc, (uint?)BuiltinFunction.MathRandf));
 								break;
 							default:
-								// CALICO: We change this to trim the idName, otherwise the whitespace messes with the token
+								// We change this to trim the idName, otherwise the whitespace messes with the token
 								finalTokens.Add(new IdentifierToken(idName.Trim()));
 								break;
 						}
@@ -422,7 +417,7 @@ public static class ScriptTokenizer
 			}
 		}
 
-		// CALICO: We don't need this since we're dealing with snippets
+		// We don't need this since we're dealing with snippets
 		//finalTokens.Add(new(TokenType.Newline, baseIndent));
 
 		foreach (var t in finalTokens)

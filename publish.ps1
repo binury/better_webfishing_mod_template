@@ -26,7 +26,7 @@ $gitTagOrHash = if (git describe --exact-match --tags HEAD 2>$null) {
 } else {
     git rev-parse --short HEAD
 }
-$zipPath = ".\thunderstore\calico_$gitTagOrHash.zip"
+$zipPath = ".\thunderstore\myModName_$gitTagOrHash.zip"
 Compress-Archive -Path @(
    ".\thunderstore\GDWeave",
    ".\thunderstore\icon.png",
