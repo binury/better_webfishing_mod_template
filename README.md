@@ -99,7 +99,7 @@ You can also achieve this with a .user file, in Visual Studio.
 
 ## Testing the DLL
 
-> [!IMPORTANT]
+> [!WARNING]
 > If you run into snags at runtime with error messages about unknown identifiers which are names of built-in functions (such as `randf` or `clamp`)
 please [file an issue](https://github.com/binury/Toes.Tuner/issues) and let me know so I can add the missing token to the list!
 
@@ -110,7 +110,7 @@ and its dependencies (if any).
 After you've built your project you can copy over the manifest file along with the dll into a new folder within your mods directory.
 I have [included a script](./webfishing-debugging-mode.bat) you can use to launch the game with GDWeave's console open. 
 
-> [!TIP]
+> [!IMPORTANT]
 > You won't see as much as you'd expect in the GDWeave log while testing/troubleshooting. You should set your system's environment variables to include 
 `GDWEAVE_DEBUG` and `GDWEAVE_CONSOLE`, and set their values as 1. When you're done
 testing and ready to play the game as usual, you can delete these env vars.
