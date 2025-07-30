@@ -1,7 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace GDWeave.Sample;
+namespace MyModName;
 
-public class Config {
-    [JsonInclude] public bool SomeSetting = true;
+public class Config(ConfigFileSchema configFile)
+{
+	[JsonInclude]
+	public bool infiniteChatRange = configFile.infiniteChatRange;
 }

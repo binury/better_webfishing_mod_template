@@ -12,6 +12,9 @@ public class Mod : IMod
 {
 	public Mod(IModInterface mi)
 	{
+		// Load your mod's configuration file
+		var config = new Config(mi.ReadConfig<ConfigFileSchema>());
+
 		mi.RegisterScriptMod(
 			new TransformationRuleScriptModBuilder()
 				.ForMod(mi)
@@ -55,7 +58,6 @@ public class Mod : IMod
 					new TransformationRuleBuilder()
 						.Named("Birdpocalypse 2!!!")
 						.Do(Operation.Append)
-						// .Matching(TransformationPatternFactory.CreateGdSnippetPattern("size() > 8"))
 						.Matching(TransformationPatternFactory.CreateGdSnippetPattern("var count = randi() % 3 + 1"))
 						.With(
 							"""
@@ -148,6 +150,8 @@ public class Mod : IMod
 					new util.LexicalTransformer.TransformationRuleBuilder()
 						.Named("Infinite local chat range limit")
 						.Do(Operation.Append)
+						// ? This rule will be SKIPPED unless this value was set to true in the mod's config
+						.When(config.infiniteChatRange)
 						.Matching(
 							TransformationPatternFactory.CreateGdSnippetPattern(
 								"""
@@ -178,7 +182,7 @@ public class Mod : IMod
 						.With(
 							"""
 
-							_recieve_safe_message(user_id, user_color, "(local) " + user_message, false)
+							 if dist < 25.0: _recieve_safe_message(user_id, user_color, "(local) " + user_message, false)
 
 							""",
 							6
