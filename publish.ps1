@@ -3,7 +3,7 @@
 param(
     [string]$Configuration = "Release",
     [string]$ProjectPath = ".\GDWeave.Sample\MyModName.csproj",
-    [string]$GDWeavePath = "C:\Program Files (x86)\Steam\teamapps\common\WEBFISHING\GDWeave"
+    [string]$GDWeavePath = "C:\Program Files (x86)\Steam\steamapps\common\WEBFISHING\GDWeave"
 )
 
 # Clean and build
