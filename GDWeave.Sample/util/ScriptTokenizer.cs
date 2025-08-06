@@ -82,6 +82,7 @@ public static class ScriptTokenizer
 			{ "self", TokenType.Self },
 			{ "in", TokenType.OpIn },
 			{ "or", TokenType.OpOr },
+			{ "and", TokenType.OpAnd },
 			{ "not", TokenType.OpNot },
 			{ "_", TokenType.Wildcard },
 			{ "[", TokenType.BracketOpen },
