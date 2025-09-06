@@ -40,7 +40,7 @@ public class Mod : IMod
 							Network._update_chat(["Your backpack is starting to smell sorta fishy...", "You're back! Try not to drown this time?", "Listen, can we just be reel for a moment?"][randi() % 3])
 
 							""",
-							2
+							indent: 2
 						)
 				)
 				.AddRule(
@@ -65,7 +65,7 @@ public class Mod : IMod
 							count = 10
 
 							""",
-							1
+							indent: 1
 						)
 				)
 				.Build()
@@ -93,7 +93,7 @@ public class Mod : IMod
 							var local_shortcut = false
 
 							""",
-							1
+							indent: 1
 						)
 				)
 				.AddRule(
@@ -113,7 +113,7 @@ public class Mod : IMod
 							"/l": local_shortcut = true
 
 							""",
-							4
+							indent: 4
 						)
 				)
 				.AddRule(
@@ -165,7 +165,7 @@ public class Mod : IMod
 							if dist >= 25.0: _recieve_safe_message(user_id, user_color, user_message, true)
 
 							""",
-							6
+							indent: 6
 						)
 				)
 				.AddRule(
@@ -185,12 +185,11 @@ public class Mod : IMod
 							 if dist < 25.0: _recieve_safe_message(user_id, user_color, "(local) " + user_message, false)
 
 							""",
-							6
+							indent: 6
 						)
 				)
 				.Build()
 		);
-		// }
 	}
 
 	public void Dispose()
