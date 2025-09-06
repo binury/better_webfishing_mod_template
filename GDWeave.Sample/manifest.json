@@ -1,6 +1,11 @@
 {
   "Id": "Toes.MyModName",
   "AssemblyPath": "MyModName.dll",
+  "PackPath": "MyModName.pck",
+  "Dependencies": [
+    "TackleBox",
+    "Toes.Socks"
+  ],
   "Metadata": {
     "Name": "The Coolest Latest Mod Without a Name Yet",
     "Author": "Toes",
