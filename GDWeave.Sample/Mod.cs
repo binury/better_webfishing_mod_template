@@ -155,7 +155,7 @@ public class Mod : IMod
 						.Matching(
 							TransformationPatternFactory.CreateGdSnippetPattern(
 								"""
-								 if dist < 25.0: _recieve_safe_message(user_id, user_color, user_message, true)
+								if dist < 25.0: _recieve_safe_message(user_id, user_color, user_message, true)
 								"""
 							)
 						)
@@ -175,14 +175,14 @@ public class Mod : IMod
 						.Matching(
 							TransformationPatternFactory.CreateGdSnippetPattern(
 								"""
-								 _recieve_safe_message(user_id, user_color, user_message, true)
+								_recieve_safe_message(user_id, user_color, user_message, true)
 								"""
 							)
 						)
 						.With(
 							"""
 
-							 if dist < 25.0: _recieve_safe_message(user_id, user_color, "(local) " + user_message, false)
+							if dist < 25.0: _recieve_safe_message(user_id, user_color, "(local) " + user_message, false)
 
 							""",
 							indent: 6

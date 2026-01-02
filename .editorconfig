@@ -5,9 +5,13 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-max_line_length = 100
+max_line_length = 120
 
-[*.{cs,csx}]
+[**.{cs,csx}]
+# MUSt USE tabS FOR SNIPPET BUILDER
+indent_style = tabs
+indent_size = 4
+
 dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = false
 
@@ -78,14 +82,10 @@ dotnet_diagnostic.IDE0007.severity = error
 # SA1600: Elements should be documented
 dotnet_diagnostic.SA1600.severity = silent
 
+[**.{config,csproj,props,slnx,targets,xaml,xml,json,json5}]
 indent_style = space
 indent_size = 4
 
-[*.{config,csproj,props,slnx,targets,xaml,xml,json,json5}]
-indent_style = space
-indent_size = 2
-
-[*.gd]
+[**.gd]
 indent_style = tab
 indent_size = 2
-

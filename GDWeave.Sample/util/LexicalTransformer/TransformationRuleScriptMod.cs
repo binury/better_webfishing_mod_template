@@ -18,7 +18,6 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-
 using GDWeave;
 using GDWeave.Godot;
 using GDWeave.Modding;
@@ -168,7 +167,7 @@ public class TransformationRuleScriptMod(
 						mod.Logger.Information($"[{name}] Patch {transformer.Rule.Name} OK!");
 						patchOccurrences[transformer.Rule.Name] = patchOccurrences[transformer.Rule.Name] with
 						{
-							Occurred = patchOccurrences[transformer.Rule.Name].Occurred + 1
+							Occurred = patchOccurrences[transformer.Rule.Name].Occurred + 1,
 						};
 					}
 				}
