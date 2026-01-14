@@ -33,171 +33,159 @@ namespace util;
 public static class ScriptTokenizer
 {
 	private static readonly IReadOnlyDictionary<string, TokenType> Tokens = new Dictionary<string, TokenType>
-    {
-        { "continue", TokenType.CfContinue },
-        { "return", TokenType.CfReturn },
-        { "break", TokenType.CfBreak },
-        { "match", TokenType.CfMatch },
-        { "while", TokenType.CfWhile },
-        { "elif", TokenType.CfElif },
-        { "else", TokenType.CfElse },
-        { "pass", TokenType.CfPass },
-        { "for", TokenType.CfFor },
-        { "if", TokenType.CfIf },
-        { "const", TokenType.PrConst },
-        { "var", TokenType.PrVar },
-        { "func", TokenType.PrFunction },
-        { "class", TokenType.PrClass },
-        { "extends", TokenType.PrExtends },
-        { "is", TokenType.PrIs },
-        { "as", TokenType.PrAs },
-        { "onready", TokenType.PrOnready },
-        { "@tool", TokenType.PrTool },
-        { "@export", TokenType.PrExport },
-        { "yield", TokenType.PrYield },
-        { "setget", TokenType.PrSetget },
-        { "static", TokenType.PrStatic },
-        { "void", TokenType.PrVoid },
-        { "enum", TokenType.PrEnum },
-        { "preload", TokenType.PrPreload },
-        { "assert", TokenType.PrAssert },
-        { "signal", TokenType.PrSignal },
-        { "breakpoint", TokenType.PrBreakpoint },
-        { "sync", TokenType.PrSync },
-        { "remote", TokenType.PrRemote },
-        { "master", TokenType.PrMaster },
-        { "slave", TokenType.PrSlave },
-        { "puppet", TokenType.PrPuppet },
-        { "remotesync", TokenType.PrRemotesync },
-        { "mastersync", TokenType.PrMastersync },
-        { "puppetsync", TokenType.PrPuppetsync },
-        { "\n", TokenType.Newline },
-        { "PI", TokenType.ConstPi },
-        { "TAU", TokenType.ConstTau },
-        { "INF", TokenType.ConstInf },
-        { "NAN", TokenType.ConstNan },
-        { "error", TokenType.Error },
-        { "cursor", TokenType.Cursor },
-        { "self", TokenType.Self },
-        { "in", TokenType.OpIn },
-        { "or", TokenType.OpOr },
-        { "and", TokenType.OpAnd },
-        { "not", TokenType.OpNot },
-        { "_", TokenType.Wildcard },
-        { "[", TokenType.BracketOpen },
-        { "]", TokenType.BracketClose },
-        { "{", TokenType.CurlyBracketOpen },
-        { "}", TokenType.CurlyBracketClose },
-        { "(", TokenType.ParenthesisOpen },
-        { ")", TokenType.ParenthesisClose },
-        { ",", TokenType.Comma },
-        { ";", TokenType.Semicolon },
-        { ".", TokenType.Period },
-        { "?", TokenType.QuestionMark },
-        { ":", TokenType.Colon },
-        { "$", TokenType.Dollar },
-        { "->", TokenType.ForwardArrow },
-        { ">>=", TokenType.OpAssignShiftRight },
-        { "<<=", TokenType.OpAssignShiftLeft },
-        { ">>", TokenType.OpShiftRight },
-        { "<<", TokenType.OpShiftLeft },
-        { "==", TokenType.OpEqual },
-        { "!=", TokenType.OpNotEqual },
-        { "&&", TokenType.OpAnd },
-        { "||", TokenType.OpOr },
-        { "!", TokenType.OpNot },
-        { "+=", TokenType.OpAssignAdd },
-        { "-=", TokenType.OpAssignSub },
-        { "*=", TokenType.OpAssignMul },
-        { "/=", TokenType.OpAssignDiv },
-        { "%=", TokenType.OpAssignMod },
-        { "&=", TokenType.OpAssignBitAnd },
-        { "|=", TokenType.OpAssignBitOr },
-        { "^=", TokenType.OpAssignBitXor },
-        { "+", TokenType.OpAdd },
-        { "-", TokenType.OpSub },
-        { "*", TokenType.OpMul },
-        { "/", TokenType.OpDiv },
-        { "%", TokenType.OpMod },
-        { "~", TokenType.OpBitInvert },
-        { "&", TokenType.OpBitAnd },
-        { "|", TokenType.OpBitOr },
-        { "^", TokenType.OpBitXor },
-        { "<=", TokenType.OpLessEqual },
-        { ">=", TokenType.OpGreaterEqual },
-        { "<", TokenType.OpLess },
-        { ">", TokenType.OpGreater },
-        { "=", TokenType.OpAssign },
-    };
+	{
+		{ "continue", TokenType.CfContinue },
+		{ "return", TokenType.CfReturn },
+		{ "break", TokenType.CfBreak },
+		{ "match", TokenType.CfMatch },
+		{ "while", TokenType.CfWhile },
+		{ "elif", TokenType.CfElif },
+		{ "else", TokenType.CfElse },
+		{ "pass", TokenType.CfPass },
+		{ "for", TokenType.CfFor },
+		{ "if", TokenType.CfIf },
+		{ "const", TokenType.PrConst },
+		{ "var", TokenType.PrVar },
+		{ "func", TokenType.PrFunction },
+		{ "class", TokenType.PrClass },
+		{ "extends", TokenType.PrExtends },
+		{ "is", TokenType.PrIs },
+		{ "as", TokenType.PrAs },
+		{ "onready", TokenType.PrOnready },
+		{ "@tool", TokenType.PrTool },
+		{ "@export", TokenType.PrExport },
+		{ "yield", TokenType.PrYield },
+		{ "setget", TokenType.PrSetget },
+		{ "static", TokenType.PrStatic },
+		{ "void", TokenType.PrVoid },
+		{ "enum", TokenType.PrEnum },
+		{ "preload", TokenType.PrPreload },
+		{ "assert", TokenType.PrAssert },
+		{ "signal", TokenType.PrSignal },
+		{ "breakpoint", TokenType.PrBreakpoint },
+		{ "sync", TokenType.PrSync },
+		{ "remote", TokenType.PrRemote },
+		{ "master", TokenType.PrMaster },
+		{ "slave", TokenType.PrSlave },
+		{ "puppet", TokenType.PrPuppet },
+		{ "remotesync", TokenType.PrRemotesync },
+		{ "mastersync", TokenType.PrMastersync },
+		{ "puppetsync", TokenType.PrPuppetsync },
+		{ "\n", TokenType.Newline },
+		{ "PI", TokenType.ConstPi },
+		{ "TAU", TokenType.ConstTau },
+		{ "INF", TokenType.ConstInf },
+		{ "NAN", TokenType.ConstNan },
+		{ "error", TokenType.Error },
+		{ "cursor", TokenType.Cursor },
+		{ "self", TokenType.Self },
+		{ "in", TokenType.OpIn },
+		{ "or", TokenType.OpOr },
+		{ "and", TokenType.OpAnd },
+		{ "not", TokenType.OpNot },
+		{ "_", TokenType.Wildcard },
+		{ "[", TokenType.BracketOpen },
+		{ "]", TokenType.BracketClose },
+		{ "{", TokenType.CurlyBracketOpen },
+		{ "}", TokenType.CurlyBracketClose },
+		{ "(", TokenType.ParenthesisOpen },
+		{ ")", TokenType.ParenthesisClose },
+		{ ",", TokenType.Comma },
+		{ ";", TokenType.Semicolon },
+		{ ".", TokenType.Period },
+		{ "?", TokenType.QuestionMark },
+		{ ":", TokenType.Colon },
+		{ "$", TokenType.Dollar },
+		{ "->", TokenType.ForwardArrow },
+		{ ">>=", TokenType.OpAssignShiftRight },
+		{ "<<=", TokenType.OpAssignShiftLeft },
+		{ ">>", TokenType.OpShiftRight },
+		{ "<<", TokenType.OpShiftLeft },
+		{ "==", TokenType.OpEqual },
+		{ "!=", TokenType.OpNotEqual },
+		{ "&&", TokenType.OpAnd },
+		{ "||", TokenType.OpOr },
+		{ "!", TokenType.OpNot },
+		{ "+=", TokenType.OpAssignAdd },
+		{ "-=", TokenType.OpAssignSub },
+		{ "*=", TokenType.OpAssignMul },
+		{ "/=", TokenType.OpAssignDiv },
+		{ "%=", TokenType.OpAssignMod },
+		{ "&=", TokenType.OpAssignBitAnd },
+		{ "|=", TokenType.OpAssignBitOr },
+		{ "^=", TokenType.OpAssignBitXor },
+		{ "+", TokenType.OpAdd },
+		{ "-", TokenType.OpSub },
+		{ "*", TokenType.OpMul },
+		{ "/", TokenType.OpDiv },
+		{ "%", TokenType.OpMod },
+		{ "~", TokenType.OpBitInvert },
+		{ "&", TokenType.OpBitAnd },
+		{ "|", TokenType.OpBitOr },
+		{ "^", TokenType.OpBitXor },
+		{ "<=", TokenType.OpLessEqual },
+		{ ">=", TokenType.OpGreaterEqual },
+		{ "<", TokenType.OpLess },
+		{ ">", TokenType.OpGreater },
+		{ "=", TokenType.OpAssign },
+	};
 
 	private static readonly IReadOnlySet<string> Symbols = new HashSet<string>
-    {
-        "->",
-        ">>=",
-        "<<=",
-        ">>",
-        "<<",
-        "==",
-        "!=",
-        "&&",
-        "||",
-        "!",
-        "+=",
-        "-=",
-        "*=",
-        "/=",
-        "%=",
-        "&=",
-        "|=",
-        "^=",
-        "[",
-        "]",
-        "{",
-        "}",
-        "(",
-        ")",
-        ",",
-        ";",
-        ".",
-        "?",
-        ":",
-        "$",
-        "+",
-        "-",
-        "*",
-        "/",
-        "%",
-        "~",
-        "&",
-        "|",
-        "^",
-        "<=",
-        ">=",
-        "<",
-        ">",
-        "=",
-    };
+	{
+		"->",
+		">>=",
+		"<<=",
+		">>",
+		"<<",
+		"==",
+		"!=",
+		"&&",
+		"||",
+		"!",
+		"+=",
+		"-=",
+		"*=",
+		"/=",
+		"%=",
+		"&=",
+		"|=",
+		"^=",
+		"[",
+		"]",
+		"{",
+		"}",
+		"(",
+		")",
+		",",
+		";",
+		".",
+		"?",
+		":",
+		"$",
+		"+",
+		"-",
+		"*",
+		"/",
+		"%",
+		"~",
+		"&",
+		"|",
+		"^",
+		"<=",
+		">=",
+		"<",
+		">",
+		"=",
+	};
 
-	private static readonly IReadOnlyDictionary<string, BuiltinFunction> BuiltinFunctionsAliases = new Dictionary<string, BuiltinFunction>
-    {
-        {"log", BuiltinFunction.MathLog},
-        {"exp", BuiltinFunction.MathExp},
-        {"randf", BuiltinFunction.MathRandf},
-        {"randi", BuiltinFunction.MathRand},
-        {"abs", BuiltinFunction.MathAbs},
-        {"pow", BuiltinFunction.MathPow},
-        {"lerp_angle", BuiltinFunction.MathLerpAngle},
-        {"print", BuiltinFunction.TextPrint},
-    };
-
-    private static readonly IReadOnlyDictionary<string, uint> BuiltinTypeIds = new Dictionary<string, uint>
-    {
-        // https://docs.godotengine.org/en/3.5/tutorials/io/binary_serialization_api.html
-        // Magic numbers from above
-        {"int", 2},
-        {"Vector3", 7},
-        {"Color", 14},
-    };
+	private static readonly IReadOnlyDictionary<string, uint> BuiltinTypeIds = new Dictionary<string, uint>
+	{
+		// https://docs.godotengine.org/en/3.5/tutorials/io/binary_serialization_api.html
+		// Magic numbers from above
+		{ "int", 2 },
+		{ "Vector3", 7 },
+		{ "Color", 14 },
+	};
 
 	private static void InsertNewLine(IEnumerator<string> enumerator, uint baseIndent, List<Token> toFlush)
 	{
@@ -208,24 +196,6 @@ public static class ScriptTokenizer
 
 		var tabCount = uint.Parse(enumerator.Current);
 		toFlush.Add(new Token(TokenType.Newline, tabCount + baseIndent));
-	}
-
-	private static void BuildIdentifierName(IEnumerator<string> enumerator, List<Token> toFlush, out string? found)
-	{
-		found = string.Empty;
-		if (!enumerator.MoveNext())
-		{
-			return;
-		}
-
-		if (enumerator.Current == ":")
-		{
-			toFlush.Add(new Token(TokenType.Wildcard));
-			toFlush.Add(new Token(TokenType.Semicolon));
-			return;
-		}
-
-		found = "_" + enumerator.Current;
 	}
 
 	private static void BuildNumber(IEnumerator<string> enumerator, List<Token> toFlush, out bool foundFull)
@@ -297,7 +267,6 @@ public static class ScriptTokenizer
 				continue;
 			}
 
-			//if (enumerator.Current == "-" || char.IsDigit(enumerator.Current[0])) {
 			if (char.IsDigit(enumerator.Current[0]))
 			{
 				BuildNumber(enumerator, toFlush, out bool foundFull);
@@ -306,33 +275,26 @@ public static class ScriptTokenizer
 				continue;
 			}
 
-            if (BuiltinTypeIds.TryGetValue(enumerator.Current, out uint builtinType))
-            {
+			if (BuiltinTypeIds.TryGetValue(enumerator.Current, out uint builtinType))
+			{
 				toFlush.Add(new Token(TokenType.BuiltInType, (uint?)builtinType));
 				endAndFlushId();
 				continue;
-            }
+			}
 
-            // Feels questionable null should be a type in a perfect world
-            if (enumerator.Current == "null")
-            {
-                toFlush.Add(new ConstantToken(new NilVariant()));
+			if (enumerator.Current == "null")
+			{
+				toFlush.Add(new ConstantToken(new NilVariant()));
 				endAndFlushId();
 				continue;
-            }
+			}
 
-			if (Enum.TryParse<BuiltinFunction>(enumerator.Current, out BuiltinFunction builtinFunction))
+			if (Enum.TryParse(enumerator.Current, out BuiltinFunc builtinFunction))
 			{
 				toFlush.Add(new Token(TokenType.BuiltInFunc, (uint)builtinFunction));
 				endAndFlushId();
 				continue;
 			}
-            else if (BuiltinFunctionsAliases.TryGetValue(enumerator.Current, out builtinFunction))
-            {
-				toFlush.Add(new Token(TokenType.BuiltInFunc, (uint)builtinFunction));
-				endAndFlushId();
-				continue;
-            }
 
 			if (Tokens.TryGetValue(enumerator.Current, out TokenType type))
 			{
@@ -371,21 +333,18 @@ public static class ScriptTokenizer
 			{
 				if (idName == string.Empty)
 				{
-                    end();
-                    return;
+					end();
+					return;
 				}
 
-                finalTokens.Add(new IdentifierToken(idName.Trim()));
-                idName = string.Empty;
+				finalTokens.Add(new IdentifierToken(idName.Trim()));
+				idName = string.Empty;
 
-                end();
+				end();
 			}
 		}
 
-		// We don't need this since we're dealing with snippets
-		//finalTokens.Add(new(TokenType.Newline, baseIndent));
-
-        return finalTokens.ToArray();
+		return finalTokens.ToArray();
 	}
 
 	private static IEnumerable<string> SanitizeInput(IEnumerable<string> tokens)
@@ -406,38 +365,38 @@ public static class ScriptTokenizer
 		StringBuilder builder = new(20);
 		for (var i = 0; i < text.Length; i++)
 		{
-            if (text[i] == '\'' || text[i] == '"')
-            {
-                char delimiter = text[i];
-                yield return ClearBuilder();
-                builder.Append(delimiter);
-                i++;
-                for (; i < text.Length; i++)
-                {
-                    builder.Append(text[i]);
-                    if (text[i] == delimiter)
-                    {
-                        break;
-                    }
-                }
+			if (text[i] == '\'' || text[i] == '"')
+			{
+				char delimiter = text[i];
+				yield return ClearBuilder();
+				builder.Append(delimiter);
+				i++;
+				for (; i < text.Length; i++)
+				{
+					builder.Append(text[i]);
+					if (text[i] == delimiter)
+					{
+						break;
+					}
+				}
 
-                yield return ClearBuilder();
-                continue;
-            }
+				yield return ClearBuilder();
+				continue;
+			}
 
-            // This is stupid and awful
-            if (text[i] == '\n')
-            {
-                yield return ClearBuilder();
-                var start = i;
-                i++;
-                for (; i < text.Length && text[i] == '\t'; i++)
-                    ;
-                i--;
-                yield return "\n";
-                yield return $"{i - start}";
-                continue;
-            }
+			// This is stupid and awful
+			if (text[i] == '\n')
+			{
+				yield return ClearBuilder();
+				var start = i;
+				i++;
+				for (; i < text.Length && text[i] == '\t'; i++)
+					;
+				i--;
+				yield return "\n";
+				yield return $"{i - start}";
+				continue;
+			}
 
 			var matched = false;
 			foreach (var delimiter in Symbols)
