@@ -1,8 +1,8 @@
+*.ds_store
 .idea/
 .vs/
 *.user
 /local
-thunderstore/GDWeave/mods/*.*
 
 bin/
 obj/
