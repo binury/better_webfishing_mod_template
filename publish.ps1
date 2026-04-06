@@ -9,6 +9,9 @@ param(
 dotnet clean $ProjectPath --configuration $Configuration
 dotnet restore $ProjectPath
 dotnet build $ProjectPath --configuration $Configuration --no-restore
+Remove-Item ".\thunderstore\GDWeave\mods\*.pck" -ErrorAction Ignore
+Remove-Item ".\thunderstore\GDWeave\mods\*.dll" -ErrorAction Ignore
+Remove-Item ".\thunderstore\GDWeave\mods\*.json" -ErrorAction Ignore
 
 # GD Script Packages
 $PckPath ="..\gd\MyModName.pck"
@@ -24,7 +27,6 @@ $manifest | ConvertTo-Json -Depth 1 | Set-Content $ThunderstoreManifestPath
 Copy-Item $PckPath ".\thunderstore\GDWeave\mods"
 Copy-Item ".\GDWeave.Sample\bin\Release\net8.0\MyModName.dll" ".\thunderstore\GDWeave\mods"
 Copy-Item ".\GDWeave.Sample\bin\Release\net8.0\manifest.json" ".\thunderstore\GDWeave\mods"
-Copy-Item ".\LICENSE" ".\thunderstore"
 
 # Zip it up
 $gitTagOrHash = if (git describe --exact-match --tags HEAD 2>$null) {
@@ -39,11 +41,8 @@ Compress-Archive -Path @(
    ".\thunderstore\manifest.json",
    ".\thunderstore\CHANGELOG.md",
    ".\thunderstore\README.md"
+   ".\thunderstore\LICENSE"
 ) -DestinationPath $zipPath -Force
-
-Remove-Item ".\thunderstore\GDWeave\mods\*.pck"
-Remove-Item ".\thunderstore\GDWeave\mods\*.dll"
-Remove-Item ".\thunderstore\GDWeave\mods\*.json"
 
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Build failed LASTEXITCODE=$LASTEXITCODE"
